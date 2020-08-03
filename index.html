@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <meta charset="UTF-8">
     <title>Rock, Paper, Scissors.</title>
     </head>
     <body>
@@ -10,13 +11,14 @@
 
     function computerPlay () {
         let randomChoice = Math.floor(Math.random()*gameChoices.length);
-        return gameChoices(randomChoice);
+        return gameChoices[randomChoice];
     }
     function playerSelection () {
         let choice = prompt('Rock, Paper or Scissors?');
+        playerSelection = playerSelection.toLowerCase()
         return choice;
     }
-    playerSelection = /playerSelection/i ;
+
 
     function playRound(playerSelection, computerSelection) {
         if (playerSelection === 'rock' && computerSelection === 'scissors' ||
@@ -38,7 +40,7 @@
 
         for (let i = 0; i < 5; i++) {
             const playerSelection = prompt('Rock, Paper or Scissors?');
-            const computerSelection = computerPlay;
+            const computerSelection = computerPlay();
             console.log(`computer chose "${computerSelection}"`);
             const outputToConsole = playRound(playerSelection, computerSelection);
             console.log(outputToConsole);
@@ -46,24 +48,23 @@
             if (outputToConsole.includes('You Win!')) {
                 playerScore++;
                 round++;
-            } else if (outputToConsole.includes('You loose!')) {
+            } else if (outputToConsole.includes('You Loose!')) {
                 computerScore++;
                 round++;
             }else{
-                return 'Tie!';
                 round++;
             }
         }
 
         if (playerScore > computerScore) {
             console.log('Congratulations, you win!');
-        } else if (playerscore < computerScore) {
+        } else if (playerScore < computerScore) {
             console.log('Unlucky, better luck next time!');
         }else{
             console.log("It's a tie!");
         }
     }
-
+            game();
     </script>
     </body>
 </html>
